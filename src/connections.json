@@ -1,0 +1,38 @@
+{
+    "yellow": {
+        "answer": "Sorte von Bären",
+        "blocks": [
+            "Panda",
+            "Braun",
+            "Wasch",
+            "Eis"
+        ]
+    },
+    "green": {
+        "answer": "Teile eines Autos",
+        "blocks": [
+            "das Rad",
+            "das Fenster",
+            "der Spiegel",
+            "der Motor"
+        ]
+    },
+    "blue": {
+        "answer": "N-Nomen",
+        "blocks": [
+            "der Junge",
+            "der Kunde",
+            "der Mensch",
+            "der Journalist"
+        ]
+    },
+    "purple": {
+        "answer": "Wörter mit auf",
+        "blocks": [
+            "Zug",
+            "Stieg",
+            "Bau",
+            "Gabe"
+        ]
+    }
+}
