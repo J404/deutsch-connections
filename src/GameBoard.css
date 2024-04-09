@@ -1,0 +1,61 @@
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+button {
+    border-radius: 0.75rem;
+    background: none;
+    font-family: Helvetica;
+    padding: 0.75rem;
+    border: 0.15rem solid black;
+    font-weight: bold;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+button:disabled {
+    color: darkgrey;
+    border-color: darkgrey;
+}
+
+.status-message {
+    color: #f56056;
+    font-style: italic;
+}
+
+.answer-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.solved {
+    border-radius: 0.5rem;
+    padding: 1rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.solved.yellow {
+    background-color: rgb(249, 223, 109);
+    color: black;
+}
+
+.solved.green {
+    background-color: rgb(160, 195, 90);
+    color: black;
+}
+
+.solved.blue {
+    background-color: rgb(176, 196, 239);
+    color: black;
+}
+
+.solved.purple {
+    background-color: rgb(186, 129, 197);
+    color: black;
+}

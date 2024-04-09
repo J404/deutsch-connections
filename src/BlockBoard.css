@@ -1,0 +1,40 @@
+.block-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+}
+
+.cell {
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin: 0.5rem;
+    text-align: center;
+    background-color: rgb(239, 239, 230);
+    color: black;
+    font-weight: bold;
+}
+
+.cell.yellow {
+    background-color: rgb(249, 223, 109);
+    color: black;
+}
+
+.cell.green {
+    background-color: rgb(160, 195, 90);
+    color: black;
+}
+
+.cell.blue {
+    background-color: rgb(176, 196, 239);
+    color: black;
+}
+
+.cell.purple {
+    background-color: rgb(186, 129, 197);
+    color: black;
+}
+
+.cell.active {
+    background-color: rgb(90, 89, 78);
+    color: white;
+}

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import BlockBoard from './BlockBoard';
 import connectionsSettings from './connections.json';
+import './GameBoard.css';
 
 type Block = { label: string, color: Color };
 export type BoardBlock = { label: string, clicked: boolean, color: Color, solved: boolean };
@@ -12,6 +13,8 @@ export default function GameBoard() {
     const [connections, setConnections] = useState<Connection[]>(connectionsArr);
     const [boardBlocks, setBoardBlocks] = useState<BoardBlock[]>(shuffleArray(blocks.map(block => ({ label: block.label, clicked: false, color: block.color, solved: false }))));
     const [clickedBlocks, setClickedBlocks] = useState<BoardBlock[]>([]);
+    const [solvedConnections, setSolvedConnections] = useState<Connection[]>([]);
+    const [statusMessage, setStatusMessage] = useState<string>('');
 
     useEffect(() => {
         for (const connection of connections) {
@@ -19,7 +22,7 @@ export default function GameBoard() {
                 return;
         }
 
-        alert('win detected!');
+        setStatusMessage('Gewonnen!')
     }, [connections])
 
     // Get all blocks from connections.json as a single array in initial order
@@ -99,12 +102,13 @@ export default function GameBoard() {
                 correctGroup = color;
                 break;
             } else if (colorGuesses[color] == 3) {
-                alert('one away...');
+                setStatusMessage('Nur einen Fehler!');
+                return;
             }
         }
 
         if (!correctGroup) {
-            alert('bad guess');
+            setStatusMessage('Falsch!');
             return;
         }
 
@@ -123,14 +127,24 @@ export default function GameBoard() {
             block.clicked = false;
         }
 
+        setSolvedConnections(currSolved => [...currSolved, connection]);
         setConnections(connectionsCopy);
         setClickedBlocks([]);
         setBoardBlocks(boardBlocksCopy);
+        setStatusMessage('');
     }
 
-    return <>
-        Game board here plz
+    return <div className='game-container'>
         <BlockBoard blocks={boardBlocks} onBlockClicked={handleBlockClick}/>
-        <button onClick={checkSelected}>Submit</button>
-    </>
+        <br/>
+        <button onClick={checkSelected} disabled={clickedBlocks.length != 4}>Submit</button>
+        <br/>
+        <span className='status-message'>{statusMessage}</span>
+        <br/>
+        {solvedConnections.length > 0 && <div className='answer-container'>
+            {solvedConnections.map((connection, i) => (
+                <div key={i} className={`solved ${connection.color}`}>{connection.label}</div>
+            ))}
+        </div>}
+    </div>
 }
