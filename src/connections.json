@@ -1,38 +1,38 @@
 {
     "yellow": {
-        "answer": "Sorte von Bären",
+        "answer": "deutsche Städte",
         "blocks": [
-            "Panda",
-            "Braun",
-            "Wasch",
-            "Eis"
+            "Leipzig",
+            "Thüringen",
+            "Essen",
+            "Hamburg"
         ]
     },
     "green": {
-        "answer": "Teile eines Autos",
+        "answer": "Dinge zu Brot zu tun",
         "blocks": [
-            "das Rad",
-            "das Fenster",
-            "der Spiegel",
-            "der Motor"
+            "essen",
+            "schneiden",
+            "backen",
+            "mit Butter bedecken"
         ]
     },
     "blue": {
-        "answer": "N-Nomen",
+        "answer": "Figuren von Goethe",
         "blocks": [
-            "der Junge",
-            "der Kunde",
-            "der Mensch",
-            "der Journalist"
+            "Faust",
+            "Werther",
+            "Erlkönig",
+            "Wilhelm"
         ]
     },
     "purple": {
-        "answer": "Wörter mit auf",
+        "answer": "Maler / Künstler von der Romantik",
         "blocks": [
-            "Zug",
-            "Stieg",
-            "Bau",
-            "Gabe"
+            "Friedrich",
+            "Schinkel",
+            "Runge",
+            "Schirmer"
         ]
     }
 }
