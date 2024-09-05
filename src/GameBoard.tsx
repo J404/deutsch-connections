@@ -62,6 +62,12 @@ export default function GameBoard() {
         return array;
     }
 
+    /**
+     * Handles the click event on a block, adding (or removing, if appropriate) it to the 
+     * the list of currently clicked blocks.
+     *  
+     * @param label Label of pressed button
+     */
     function handleBlockClick(label: string) {
         const blockCopy = [...boardBlocks];
         const clickedBlock = blockCopy.find(block => block.label == label);
@@ -85,11 +91,18 @@ export default function GameBoard() {
         }
     }
 
+    /**
+     * Checks the current status of the board guesses to determine if the user has correctly guessed a 
+     * category or not.
+     */
     function checkSelected() {
+        // First, make sure the user has selected 4 blocks, or do not process the request.
         if (clickedBlocks.length < 4) {
             return;
         }
 
+        // Get the number of guesses in each color category -- a correct guess will have 4 in one category
+        // and 0 in all others.
         const colorGuesses: Record<Color, number> = { 'yellow': 0, 'green': 0, 'blue': 0, 'purple': 0 };
         for (const block of clickedBlocks) {
             colorGuesses[block.color]++;
@@ -98,20 +111,25 @@ export default function GameBoard() {
         let correctGroup: Color | undefined = undefined;
         const colors: Color[] = ['yellow', 'green', 'blue', 'purple'];
         for (const color of colors) {
+            // If any one category has 4 blocks, we know the user has correctly guessed that category, and we may stop.
             if (colorGuesses[color] == 4) {
                 correctGroup = color;
                 break;
             } else if (colorGuesses[color] == 3) {
+                // Otherwise, if the user guessed 3 / 4 of a category, show a hint message
                 setStatusMessage('Nur einen Fehler!');
                 return;
             }
         }
 
+        // If no correct guess was made, show a status message stating so.
         if (!correctGroup) {
             setStatusMessage('Falsch!');
             return;
         }
 
+        // Otherwise, a correct guess was made, so update the clicked blocks and solved status of the board
+        // accordingly.
         const connectionsCopy = [...connections];
         const boardBlocksCopy = [...boardBlocks];
         const connection = connectionsCopy.find(group => group.color == correctGroup);
